@@ -7,6 +7,7 @@ import LancamentosTable from "./lancamentosTable";
 import LancamentoService from "../../app/service/lancamentoService";
 import LocalStorageService from "../../app/service/localStorageService";
 
+import * as messages from '../../components/toastr';
 class ConsultaLancamentos extends React.Component{
 
     state = {
@@ -24,6 +25,10 @@ class ConsultaLancamentos extends React.Component{
 
     buscar = () => {
 
+        if(!this.state.ano){
+            messages.mensagemErro("O preenchimento do campo ano é obrigatório")
+            return false;
+        }
         const usuarioLogado = LocalStorageService.obterItem('_usuario_logado')
 
         const lancamentoFiltro = {
@@ -41,6 +46,24 @@ class ConsultaLancamentos extends React.Component{
         }).catch(error => {
             console.log("error")
         })
+    }
+
+    deletar = (lancamento) => {
+       this.service.deletar(lancamento.id)
+       .then(response =>{
+            const lancamentos = this.state.lancamentos;
+            const index = lancamentos.indexOf(lancamento)
+            lancamentos.splice(index,1)
+            this.setState(lancamentos)
+            
+            messages.mensagemSucesso("Lancamento deletado com sucesso")
+       }).catch(error =>{
+            messages.mensagemErro("Erro ao deletar o lancamento")
+       })
+    }
+
+    editar = (id) => {
+        console.log('editar',id)
     }
 
     render(){
@@ -95,7 +118,10 @@ class ConsultaLancamentos extends React.Component{
                 <div className="row">
                     <div className="col-md-12">
                         <div className="bs-component">
-                            <LancamentosTable lancamentos={this.state.lancamentos} />
+                            <LancamentosTable lancamentos={this.state.lancamentos} 
+                                              deleteAction={this.deletar}
+                                              editAction={this.editar}
+                            />
                         </div>
                     </div>
                 </div>

@@ -5,6 +5,10 @@ export default class LancamentoService extends ApiService {
         super('/api/lancamentos')
     }
 
+    deletar(id){
+        return this.delete(`/${id}`)
+    }
+
     obterListaTipos(){
         return  [
             {label: 'Selecione...', value:''},

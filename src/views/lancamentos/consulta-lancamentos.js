@@ -24,7 +24,7 @@ class ConsultaLancamentos extends React.Component{
     }
 
     buscar = () => {
-
+       
         if(!this.state.ano){
             messages.mensagemErro("O preenchimento do campo ano é obrigatório")
             return false;
@@ -33,7 +33,7 @@ class ConsultaLancamentos extends React.Component{
 
         const lancamentoFiltro = {
             ano: this.state.ano,
-            mes: this.state.tipo,
+            mes: this.state.mes,
             descricao: this.state.descricao,
             tipo: this.state.tipo,
             usuario: usuarioLogado.id
@@ -55,7 +55,7 @@ class ConsultaLancamentos extends React.Component{
             const index = lancamentos.indexOf(lancamento)
             lancamentos.splice(index,1)
             this.setState(lancamentos)
-            
+
             messages.mensagemSucesso("Lancamento deletado com sucesso")
        }).catch(error =>{
             messages.mensagemErro("Erro ao deletar o lancamento")

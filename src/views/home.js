@@ -22,7 +22,7 @@ class Home extends React.Component{
         this.setState({nomeUsuario: usuarioLogado.nome})
 
         this.usuarioService
-            .obterSaldoPorUsuario(usuarioLogado.id)
+            .obterSaldoPorUsuarioMes(usuarioLogado.id)
             .then( response =>{
                 this.setState({saldo: response.data})
             } ).catch(error => {

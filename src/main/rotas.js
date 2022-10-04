@@ -3,7 +3,7 @@ import  React from 'react';
 import Login from '../views/login';
 import CadastrarUsuario from '../views/cadastroUsuario';
 import Home from '../views/home';
-import consultaLancamentos from '../views/consulta-lancamentos';
+import consultaLancamentos from '../views/lancamentos/consulta-lancamentos';
 
 import { Route, Switch, HashRouter } from 'react-router-dom';
 

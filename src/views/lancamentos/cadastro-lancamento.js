@@ -59,7 +59,7 @@ class CadastroLancamentos extends React.Component {
                 <div className="row">
                     <div className="col-md-6">
                     <FormGroup label="Ano: *" id="inputAno">
-                            <input type="text"
+                            <input type="number"
                                    id="inputAno"
                                    name="ano"
                                    className='form-control'
@@ -72,7 +72,7 @@ class CadastroLancamentos extends React.Component {
                     <FormGroup label="Mês: *" id="inputMes">
                         <SelectMenu id="inputMes"
                                     value={this.state.mes}
-                                    name="Mes"
+                                    name="mes"
                                     onChange={this.handleChange}
                                     lista={meses} className="form-control" />
                     </FormGroup>

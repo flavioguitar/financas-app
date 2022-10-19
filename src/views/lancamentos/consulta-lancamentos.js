@@ -6,6 +6,7 @@ import SelectMenu from "../../components/selectMenu";
 import LancamentosTable from "./lancamentosTable";
 import LancamentoService from "../../app/service/lancamentoService";
 import LocalStorageService from "../../app/service/localStorageService";
+import cadastroLancamento from "./cadastro-lancamento";
 
 import * as messages from '../../components/toastr';
 
@@ -84,6 +85,11 @@ class ConsultaLancamentos extends React.Component{
         console.log('editar',id)
     }
 
+    cadastrarLancamento = () => {
+
+        this.props.history.push('/cadastro-lancamentos')       
+    }
+
     render(){
         const meses = this.service.obterListaMeses()
 
@@ -136,7 +142,7 @@ class ConsultaLancamentos extends React.Component{
                             </FormGroup>
                             <br />
                             <button onClick={this.buscar} type="button" className="btn btn-success" >Buscar</button>
-                            <button type="button" className="btn btn-danger">Cadastrar</button>
+                            <button onClick={this.cadastrarLancamento} type="button" className="btn btn-danger">Cadastrar</button>                            
                         </div>
                     </div>
                 </div>

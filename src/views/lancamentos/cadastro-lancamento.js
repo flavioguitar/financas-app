@@ -8,9 +8,32 @@ import { withRouter } from 'react-router-dom'
 
 class CadastroLancamentos extends React.Component {
 
+    state = {
+        id: null,
+        descricao: '',
+        valor: '',
+        mes: '',
+        ano: '',
+        tipo: '',
+        status: ''
+    
+    }
+
     constructor(){
         super();
         this.service = new LancamentoService();
+    }
+
+    submit = () => {
+        console.log(this.state)
+    }
+
+
+    handleChange = (event) => {
+        const value = event.target.value;
+        const name = event.target.name;
+
+        this.setState({ [name] : value})
     }
 
     render(){
@@ -26,7 +49,9 @@ class CadastroLancamentos extends React.Component {
                             <input type="text"
                                    id="inputDescricao"
                                    className='form-control'
-                                   //onChange={e => this.setState({email: e.target.value})}
+                                   name="descricao"
+                                   value={this.state.descricao}
+                                   onChange={this.handleChange}
                             />
                     </FormGroup>
                     </div>                   
@@ -36,43 +61,58 @@ class CadastroLancamentos extends React.Component {
                     <FormGroup label="Ano: *" id="inputAno">
                             <input type="text"
                                    id="inputAno"
+                                   name="ano"
                                    className='form-control'
-                                   //onChange={e => this.setState({email: e.target.value})}
+                                   value={this.state.ano}
+                                   onChange={this.handleChange}
                             />
                     </FormGroup>
                     </div>
                     <div className="col-md-6">
                     <FormGroup label="Mês: *" id="inputMes">
-                        <SelectMenu id="inputTipo" lista={meses} className="form-control" />
+                        <SelectMenu id="inputMes"
+                                    value={this.state.mes}
+                                    name="Mes"
+                                    onChange={this.handleChange}
+                                    lista={meses} className="form-control" />
                     </FormGroup>
                     </div>
                 </div>
                 <div className="row">
                         <div className="col-md-4">
                         <FormGroup label="Valor: *" id="inputValor">
-                            <input type="text"
+                            <input type="number"
                                    id="inputValor"
                                    className='form-control'
-                                   //onChange={e => this.setState({email: e.target.value})}
+                                   name="valor"
+                                   value={this.state.valor}
+                                   onChange={this.handleChange}
                             />
                         </FormGroup>
                     </div>
                     <div className="col-md-4">
                             <FormGroup label="Tipo: *" id="inputTipo">
-                                <SelectMenu id="inputTipo" lista={tipos} className="form-control" />
+                                <SelectMenu id="inputTipo"
+                                    name="tipo"
+                                    value={this.state.tipo}
+                                    onChange={this.handleChange}
+                                    lista={tipos} className="form-control" />
                             </FormGroup>
                     </div>
 
                     <div className="col-md-4">
                             <FormGroup label="Status: *" id="inputStatus">
-                                <input type="text" className="form-control" disabled></input>
+                                <input type="text"
+                                    name="status"
+                                    value={this.state.status}                                    
+                                 className="form-control" disabled></input>
                             </FormGroup>
                     </div>                   
                 </div>
                 <br/>
                 <div className="row">
                     <div className="col-md-6">
-                        <button className="btn btn-success">Salvar</button>
+                        <button onClick={this.submit} className="btn btn-success">Salvar</button>
                         <button className="btn btn-danger">Cancelar</button>
                     </div>                       
                 </div>

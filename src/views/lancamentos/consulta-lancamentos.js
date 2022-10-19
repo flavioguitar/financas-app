@@ -6,7 +6,6 @@ import SelectMenu from "../../components/selectMenu";
 import LancamentosTable from "./lancamentosTable";
 import LancamentoService from "../../app/service/lancamentoService";
 import LocalStorageService from "../../app/service/localStorageService";
-import cadastroLancamento from "./cadastro-lancamento";
 
 import * as messages from '../../components/toastr';
 

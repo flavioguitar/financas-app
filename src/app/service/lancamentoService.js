@@ -9,6 +9,10 @@ export default class LancamentoService extends ApiService {
         return this.delete(`/${id}`)
     }
 
+    obterPorId(id){
+        return this.get(`/${id}`)
+    }
+
     obterListaTipos(){
         return  [
             {label: 'Selecione...', value:''},
@@ -33,6 +37,14 @@ export default class LancamentoService extends ApiService {
         {label: 'Novembro', value:'11'},
         {label: 'Dezembro', value:'12'}
     ]
+    }
+
+    salvar(lancamento){
+        return this.post('/',lancamento);
+    }
+
+    atualizar(lancamento){
+        return this.put(`/${lancamento.id}`,lancamento);
     }
 
     consultar(lancamentoFiltro){        

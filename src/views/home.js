@@ -45,7 +45,7 @@ class Home extends React.Component{
                  href="#/cadastro-usuarios" 
                  role="button"><i className="fa fa-users"></i>  Cadastrar Usuário</a>
               <a className="btn btn-danger btn-lg"
-                 href="#/" 
+                 href="#/cadastro-lancamentos" 
                  role="button"><i className="fa fa-users"></i>  Cadastrar Lançamento</a>
             </p>
           </div>

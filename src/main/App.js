@@ -1,6 +1,7 @@
 import React from "react";
 import Rotas from "./rotas";
 import NavBar from "../components/navbar";
+import ProvedorAutenticao from "./provedorAutenticacao";
 
 import 'toastr/build/toastr.min.js'
 import 'bootswatch/dist/flatly/bootstrap.css'
@@ -14,12 +15,12 @@ class App extends React.Component {
 
   render(){
     return (
-      <>
+      <ProvedorAutenticao>
         <NavBar/>        
         <div className="container">
           <Rotas/>
       </div>
-    </>
+    </ProvedorAutenticao>
     ) 
   }
 

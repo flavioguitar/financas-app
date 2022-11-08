@@ -25,6 +25,7 @@ function RotaAutenticada({ component: Component,isUsuarioAutenticado, ...props }
     )
 }
 function Rotas(props){
+    console.log('props',props)
     return (
         <HashRouter>
             <Switch>
@@ -39,7 +40,11 @@ function Rotas(props){
 }
 
 export default () => (
-    <AuthConsumer>
-        { (context) => (<Rotas isUsuarioAutenticado={context.isUsuarioAutenticado}/>) }
+    <AuthConsumer>    
+        {
+         (context) =>
+         (<Rotas isUsuarioAutenticado={context.isAutenticado} />)
+        
+        }
     </AuthConsumer>
 )

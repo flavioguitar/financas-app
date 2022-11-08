@@ -17,7 +17,9 @@ class Home extends React.Component{
     componentDidMount(){
 
         //const usuarioLogadostring = LocalStorageService.obterItem('_usuario_logado') 
-        const usuarioLogadostring = this.context.usuarioAutenticado;
+       
+        const usuarioLogadostring = this.context.usuarioAutenticado
+        console.log('usuario', usuarioLogadostring)
         const usuarioLogado = usuarioLogadostring
         
         this.setState({nomeUsuario: usuarioLogado.nome})

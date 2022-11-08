@@ -1,8 +1,9 @@
+import React from "react";
 import LocalStorageService from "./localStorageService";
 
 export const USUARIO_LOGADO='_usuario_logado'
 
-export default class AuthService {
+class AuthService extends React.Component{
 
     static isUsuarioAutenticado(){
         const usuario = LocalStorageService.obterItem(USUARIO_LOGADO)
@@ -14,7 +15,7 @@ export default class AuthService {
         LocalStorageService.removerItem(USUARIO_LOGADO)
     }
 
-    static logar(usuario){
+    static logar(usuario){       
         LocalStorageService.adicionarItem(USUARIO_LOGADO, usuario);
 
     }
@@ -23,3 +24,5 @@ export default class AuthService {
         LocalStorageService.obterItem(USUARIO_LOGADO);
     }
 }
+
+export default AuthService;
